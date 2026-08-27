@@ -5,25 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "users")
-public class User {
+@Table(name = "products")
+public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
     private String name;
 
     @Column
-    private String username;
+    private BigDecimal value;
 
-    @Column(name = "password_hash")
-    private String passwordHash;
-
-    @Column
-    private String role;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Category category;
 }

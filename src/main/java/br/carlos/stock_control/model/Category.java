@@ -9,21 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "users")
-public class User {
+@Table(name = "categories")
+public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
     private String name;
-
-    @Column
-    private String username;
-
-    @Column(name = "password_hash")
-    private String passwordHash;
-
-    @Column
-    private String role;
 }
