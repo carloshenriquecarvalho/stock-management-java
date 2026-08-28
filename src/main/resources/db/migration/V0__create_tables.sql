@@ -16,7 +16,7 @@ CREATE TABLE categories(
 CREATE TABLE products(
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
-    value DECIMAL(10,2) NOT NULL,
+    current_value DECIMAL(10,2) NOT NULL,
     category_id BIGINT,
 
     FOREIGN KEY (category_id)
@@ -27,7 +27,7 @@ CREATE TABLE orders(
     id BIGSERIAL PRIMARY KEY,
     seller_id BIGINT NOT NULL,
     customer_id BIGINT NOT NULL,
-    unit_price DECIMAL(10,2),
+    total_price DECIMAL(10,2),
 
     FOREIGN KEY (seller_id)
             REFERENCES users(id),
@@ -42,6 +42,7 @@ CREATE TABLE order_items(
     order_id BIGINT NOT NULL,
     product_id BIGINT NOT NULL,
     quantity INTEGER NOT NULL DEFAULT 1,
+    unit_price DECIMAL(10,2),
 
     FOREIGN KEY (order_id)
             REFERENCES orders(id),

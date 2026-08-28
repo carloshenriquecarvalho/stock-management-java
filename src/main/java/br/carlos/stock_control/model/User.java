@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.aspectj.weaver.ast.Or;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -26,4 +30,11 @@ public class User {
 
     @Column
     private String role;
+
+    @OneToMany(mappedBy = "seller")
+    private List<Order> sales = new ArrayList<>();
+
+    @OneToMany(mappedBy = "customer")
+    private List<Order> purchases = new ArrayList<>();
+
 }
